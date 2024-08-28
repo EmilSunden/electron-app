@@ -1,0 +1,17 @@
+{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cross-env BROWSER=none npm start --prefix frontend\" \"wait-on http://localhost:7000 && electron .\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^32.0.1",
+    "electron-is-dev": "^3.0.1"
+  }
+}
