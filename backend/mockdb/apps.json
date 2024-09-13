@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "logo": "https://cdn.auth0.com/blog/react-js/react.png",
+    "name": "React",
+    "url": "https://reactjs.org/"
+  },
+  {
+    "id": "2",
+    "logo": "https://seekvectors.com/files/download/eed9404d5f80e1ffd54d65c79389f59a.jpg",
+    "name": "Netflix",
+    "url": "https://www.netflix.com/"
+  }
+]

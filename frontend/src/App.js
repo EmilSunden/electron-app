@@ -1,21 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
+
+import ReadAllApps from "./components/readAllApps/ReadAllApps";
+import FieldInput from "./components/fieldInput/FieldInput";
 
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    const fetchApiUrl = async () => {
-      const res = await fetch("http://localhost:8080/api/hello");
-      const data = await res.json();
-      setMessage(data.message);
-    
-    }
-    fetchApiUrl();
-  } , []);
-
   return (
     <div className="App">
-      <h1>{message}</h1>
+      <FieldInput />
+      <ReadAllApps/>
     </div>
   );
 }
