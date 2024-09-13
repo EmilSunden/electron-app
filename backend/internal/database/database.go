@@ -11,7 +11,7 @@ import (
 )
 
 func init() {
-	err := godotenv.Load("../../.env");
+	err := godotenv.Load("../../.env")
 	if err != nil {
 		log.Println("Warning: .env file not found or could not be loaded")
 	}
@@ -23,17 +23,17 @@ func InitDB() (*sql.DB, error) {
 	if db != nil {
 		return db, nil
 	}
-	dbUser := os.Getenv("DB_USER");
+	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWORD")
-	dbName := os.Getenv("DB_NAME");
+	dbName := os.Getenv("DB_NAME")
 	dbHost := os.Getenv("DB_HOST")
-	dbPort := os.Getenv("DB_PORT");
+	dbPort := os.Getenv("DB_PORT")
 
 	connStr := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable",
-	dbUser, dbPassword, dbHost, dbPort, dbName)
+		dbUser, dbPassword, dbHost, dbPort, dbName)
 
 	var err error
-	db, err = sql.Open("postgres", connStr);
+	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open database connection: %v", err)
 	}
@@ -48,8 +48,7 @@ func InitDB() (*sql.DB, error) {
 	db.SetMaxOpenConns(25)
 	db.SetMaxIdleConns(25)
 	db.SetConnMaxLifetime(5 * 60)
-	
+
 	fmt.Println("Database connection established")
 	return db, nil
 }
-

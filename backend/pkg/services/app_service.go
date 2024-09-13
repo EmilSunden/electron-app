@@ -10,13 +10,13 @@ import (
 
 type AppService struct {
 	filePath string // TODO: change property to db
-	Apps []models.App
+	Apps     []models.App
 }
 
 func NewAppService(filePath string) *AppService {
 	service := &AppService{
 		filePath: filePath, // TODO: Change value to db
-		Apps: []models.App{},
+		Apps:     []models.App{},
 	}
 
 	service.loadAppsFromFile()
