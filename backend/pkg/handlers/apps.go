@@ -9,26 +9,38 @@ import (
 	"github.com/EmilSunden/electron-app/backend/pkg/services"
 )
 
-// Create a simple handler that returns hello world
-func HelloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World")
+type Handler struct {
+	AppService *services.AppService
 }
 
-var appService = services.NewAppService("../../mockdb/apps.json")
+func NewHandler(appService *services.AppService) *Handler {
+	return &Handler{
+		AppService: appService,
+	}
+}
 
-func ReadApps(w http.ResponseWriter, r *http.Request) {
-	apps := appService.GetApps()
+func (h *Handler) ReadApps(w http.ResponseWriter, r *http.Request) {
+	apps, err := h.AppService.GetApps()
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Failed to get apps: %v", err), http.StatusInternalServerError)
+		return
+	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(apps)
 }
 
-func CreateApp(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) CreateApp(w http.ResponseWriter, r *http.Request) {
 	var newApp models.App
 	if err := json.NewDecoder(r.Body).Decode(&newApp); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, fmt.Sprintf("Invalid request payload: %v", err), http.StatusBadRequest)
 		return
 	}
-	appService.CreateApp(newApp)
+
+	err := h.AppService.CreateApp(&newApp)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Failed to create app: %v", err), http.StatusInternalServerError)
+		return
+	}
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(newApp)
 }

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import ReadAllApps from "./components/readAllApps/ReadAllApps";
 import FieldInput from "./components/fieldInput/FieldInput";
+import Container from "./components/container/Container";
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <FieldInput />
-      <ReadAllApps/>
-    </div>
+      <ReadAllApps />
+    </Container>
   );
 }
 

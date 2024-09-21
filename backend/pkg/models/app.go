@@ -1,9 +1,8 @@
 package models
 
 type App struct {
-	ID   string `json:"id"`
-	Logo string `json:"logo"`
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	AppID   int    `json:"app_id"`
+	AppName string `json:"app_name"`
+	AppURL  string `json:"app_url"`
+	Image   *Image `json:"image"` // Pointer to allow nil
 }
-

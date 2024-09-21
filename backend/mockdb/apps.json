@@ -1,26 +1,16 @@
 [
   {
-    "id": "1",
-    "logo": "https://cdn.auth0.com/blog/react-js/react.png",
-    "name": "React",
-    "url": "https://reactjs.org/"
+    "app_id": 1,
+    "app_logo": "####",
+    "app_name": "HBO",
+    "app_url": "https://www.hbo.com",
+    "app_type": "streaming"
   },
   {
-    "id": "2",
-    "logo": "https://seekvectors.com/files/download/eed9404d5f80e1ffd54d65c79389f59a.jpg",
-    "name": "Netflix",
-    "url": "https://www.netflix.com/"
-  },
-  {
-    "id": "3",
-    "logo": "####",
-    "name": "HBO",
-    "url": "https://www.hbo.com"
-  },
-  {
-    "id": "4",
-    "logo": "#####",
+    "app_id": 2,
+    "app_logo": "#####",
     "name": "Youtube",
-    "url": "https://www.youtube.com"
+    "app_url": "https://www.youtube.com",
+    "app_type": "streaming"
   }
 ]

@@ -8,7 +8,7 @@ const ReadAllApps = () => {
     const {data, error, loading, setUrl, setOptions} = useFetch()
     
     useEffect(() => {
-      setUrl('http://localhost:8080/api/apps');
+      setUrl('http://localhost:8080/api/get/apps');
     }, []);
 
     if (loading) return <div>Loading...</div>
